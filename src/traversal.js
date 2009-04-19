@@ -11,7 +11,12 @@
    */
   function up(element, expr) {
     var i = 0, isIndex = typeof expr == 'number';
+    if (arguments.length < 2) {
+      isIndex = true;
+      expr = 0;
+    }
     while (element = element.parentNode) {
+      if (element.nodeType != 1) continue;
       if (isIndex) {
         if (i++ == expr) {
           return element;
@@ -48,7 +53,12 @@
    */
   function next(element, expr) {
     var i = 0, isIndex = typeof expr == 'number';
+    if (arguments.length < 2) {
+      isIndex = true;
+      expr = 0;
+    }
     while (element = element.nextSibling) {
+      if (element.nodeType != 1) continue;
       if (isIndex) {
         if (i++ == expr) {
           return element;
@@ -65,7 +75,12 @@
    */
   function previous(element, expr) {
     var i = 0, isIndex = typeof expr == 'number';
+    if (arguments.length < 2) {
+      isIndex = true;
+      expr = 0;
+    }
     while (element = element.previousSibling) {
+      if (element.nodeType != 1) continue;
       if (isIndex) {
         if (i++ == expr) {
           return element;
