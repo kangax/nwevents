@@ -359,6 +359,18 @@
           var dummy = $(document.createElement('DIV'));
           dummy.innerHTML = '<div></div>'.times(3);
           this.assert(typeof $(NW.Dom.next($(dummy.childNodes[0]))).setStyle == 'function');
+        },
+        
+        testPerformance: function() {
+          var element = NW.Dom.down($('navigation_test'), 'li.first'), lim = 1000;
+          
+          this.benchmark(function(){
+            Element.up(element, '#nav_tests_isolator');
+          }, lim, 'Element.up');
+          
+          this.benchmark(function(){
+            NW.Dom.up(element, '#nav_tests_isolator');
+          }, lim, 'NW.Dom.up');
         }
       });
     </script>
